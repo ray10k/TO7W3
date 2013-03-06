@@ -11,8 +11,8 @@ namespace Tho7_Week3.ImageModifications
     /* Jonathan Smit 
      * USE: static MedianCompare.percentage, after running to get the difference in percentage (original vs source)
      * OUTPUT: new Bitmap with black, grey or white pixels to show the difference
-     * /
-     * 
+     *
+     */
     class MedianCompare
     {
         public static int percentage;
