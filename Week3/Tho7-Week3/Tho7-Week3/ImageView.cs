@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Tho7_Week3
 {
+    /// <author>
+    /// Erwim Bonnet
+    /// </author>
     public partial class ImageView : UserControl
     {
+        private Form1 parent;
+
         public ImageView()
         {
             InitializeComponent();
+        }
+
+        public void SetParent(Form1 form)
+        {
+            parent = form;
         }
 
         public string BoxName
@@ -22,16 +32,22 @@ namespace Tho7_Week3
             set { groupBox1.Text = value; }
         }
 
-        public Image Image
+        public Bitmap Image
         {
             get
             {
-                return pictureBox1.Image;
+                return pictureBox1.Image as Bitmap;
             }
             set
             {
                 pictureBox1.Image = value;
             }
+        }
+
+        private void DoOpenFile(object sender, EventArgs e)
+        {
+            if (parent != null)
+                parent.OpenImage();
         }
     }
 }
