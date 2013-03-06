@@ -16,5 +16,25 @@ namespace Tho7_Week3
         {
             InitializeComponent();
         }
+
+        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void noiseType1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void medianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

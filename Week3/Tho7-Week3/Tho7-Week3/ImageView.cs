@@ -16,5 +16,22 @@ namespace Tho7_Week3
         {
             InitializeComponent();
         }
+
+        public string BoxName
+        {
+            set { groupBox1.Text = value; }
+        }
+
+        public Image Image
+        {
+            get
+            {
+                return pictureBox1.Image;
+            }
+            set
+            {
+                pictureBox1.Image = value;
+            }
+        }
     }
 }
