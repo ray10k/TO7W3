@@ -9,19 +9,55 @@ using System.Drawing.Imaging;
 namespace Tho7_Week3.ImageModifications
 {
     /* Jonathan Smit 
-     * USE: static MedianCompare.percentage, after running to get the difference in percentage (original vs source)
-     * OUTPUT: new Bitmap with black, grey or white pixels to show the difference
-     *
+     * USE: static MedianCompare.percentageChanged, after running to get the difference in percentage (original vs source)
+     * USE: static pixelsChanged, after running to get the amount of changed pixels.
+     * OUTPUT: bitmap with black, grey or white pixels to show the difference
+     * OUTPUT: byte[] with black, grey or white pixels to show the difference
      */
     class MedianCompare
     {
-        public static int percentage;
+        public static int percentageChanged = 0;
+        public static int pixelsChanged = 0;
+
+        public byte[] DoAlgorithm(ref byte[] originalImage, ref byte[] sourceImage)
+        {
+            //counter to keep track of changed pixels
+            int changedPixels = 0;
+
+            byte[] retVal = new byte[originalImage.Length];
+
+            for (int y = 0; y < originalImage.Length; y+=3)
+            {
+                int avg1 = (originalImage[y] + originalImage[y + 1] + originalImage[y + 2]) / 3;
+                int avg2 = (sourceImage[y] + sourceImage[y + 1] + sourceImage[y + 2]) / 3;
+                byte val = (byte)(((avg1 - avg2) / 2) + 127);
+
+                //if the original rgb-values are not equals to sourceImage 
+                //increment changedPixels
+                if ( (originalImage[y] != sourceImage[y]) || (originalImage[y + 1] != sourceImage[y + 1]) || (originalImage[y + 2] != sourceImage[y + 2]) )
+                {
+                    changedPixels++;
+                }
+
+                //make the unique 'pixel'
+                retVal[y] = val;
+                retVal[y+ 1] = val;
+                retVal[y+ 2] = val;
+                
+            }
+
+            int totalPixels = originalImage.Length / 3;
+
+            percentageChanged = (changedPixels / totalPixels) * 100;
+            pixelsChanged = changedPixels;
+
+            return retVal;
+        }
 
         public System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap originalImage, System.Drawing.Bitmap sourceImage)
         {
             Bitmap newBitmap = new Bitmap(sourceImage.Width, sourceImage.Height);
 
-            percentage = 0;
             int changedPixels = 0;
 
             unsafe
@@ -57,28 +93,29 @@ namespace Tho7_Week3.ImageModifications
 
                     for (int x = 0; x < sourceImage.Width; x++)
                     {
-                        //get original data
-                        byte oR = oRow[x * pixelSize];
-                        byte oG = oRow[x * pixelSize + 1];
-                        byte oB = oRow[x * pixelSize + 2];
-
-                        //get source data
-                        byte sR = sRow[x * pixelSize];
-                        byte sG = sRow[x * pixelSize + 1];
-                        byte sB = sRow[x * pixelSize + 2];
-
                         //compare here..
+                        //procedure:
+                        //two pixels, get the average of both pixels
+                        //substract pixel one from pixel two, the result is a value some between -255 - 255
+                        //divide by 2, then result is a value between -127 - 127
+                        //add 127 and the new result is a value between 0 - 254
+                        //this value is the new greyvalue
 
-                        if(true){
+                        int avg1 = (oRow[x * pixelSize] + oRow[x * pixelSize + 1] + oRow[x * pixelSize + 2]) / 3;
+                        int avg2 = (sRow[x * pixelSize] + sRow[x * pixelSize + 1] + sRow[x * pixelSize + 2]) / 3;
+                        byte val = (byte)(((avg1 - avg2) / 2) + 127);
+
+                        //als de originele rgb-waarden niet gelijk zijn aan de source
+                        //optellen van changedPixels
+                        if ((oRow[x * pixelSize] + oRow[x * pixelSize + 1] + oRow[x * pixelSize + 2]) != sRow[x * pixelSize] + sRow[x * pixelSize + 1] + sRow[x * pixelSize + 2])
+                        {
                             changedPixels++;
                         }
 
-                        byte nR = 0, nG = 0, nB = 0;
-
                         //make the unique pixel
-                        nRow[x * pixelSize] = nR;
-                        nRow[x * pixelSize + 1] = nG;
-                        nRow[x * pixelSize + 2] = nB;
+                        nRow[x * pixelSize] = val;
+                        nRow[x * pixelSize + 1] = val;
+                        nRow[x * pixelSize + 2] = val;
 
                     }
                 }
@@ -86,7 +123,8 @@ namespace Tho7_Week3.ImageModifications
 
             int totalPixels = originalImage.Width * originalImage.Height;
 
-            percentage = (changedPixels / totalPixels) * 100;
+            percentageChanged = (changedPixels / totalPixels) * 100;
+            pixelsChanged = changedPixels;
 
             return newBitmap;
         }
