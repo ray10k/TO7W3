@@ -14,6 +14,13 @@ namespace Tho7_Week3.ImageModifications.Filters
         }
         public override System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap sourceImage)
         {
+            /**
+             * Bitmap retBmp = new Bitmap(sourceImage);
+             * 
+             * i.p.v. pixel voor pixel overzetten
+             * 
+             * */
+
             unsafe
             {
                 //create an empty bitmap the same size as original
