@@ -52,6 +52,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageModifications\BitmapCompare.cs" />
+    <Compile Include="ImageModifications\MedianCompare.cs" />
     <Compile Include="ImageModifications\Filters\MedianAlgorithmUnsafe3x3BMCopy.cs" />
     <Compile Include="ImageModifications\Filters\VisionAlgorithm.cs" />
     <Compile Include="ImageView.cs">

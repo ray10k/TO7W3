@@ -33,19 +33,19 @@
             this.openImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.noisePercTxt = new System.Windows.Forms.Label();
-            this.NoisePixels = new System.Windows.Forms.Label();
-            this.NoisePerc = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.CorrectedPix = new System.Windows.Forms.Label();
-            this.CorrectedPerc = new System.Windows.Forms.Label();
             this.PixCount = new System.Windows.Forms.Label();
+            this.CorrectedPerc = new System.Windows.Forms.Label();
+            this.CorrectedPix = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NoisePerc = new System.Windows.Forms.Label();
+            this.NoisePixels = new System.Windows.Forms.Label();
+            this.noisePercTxt = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.CBNoise = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -113,84 +113,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Stats";
             // 
-            // label1
+            // PixCount
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Input Image";
+            this.PixCount.AutoSize = true;
+            this.PixCount.Location = new System.Drawing.Point(76, 36);
+            this.PixCount.Name = "PixCount";
+            this.PixCount.Size = new System.Drawing.Size(0, 13);
+            this.PixCount.TabIndex = 12;
             // 
-            // label2
+            // CorrectedPerc
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Pixel Count:";
+            this.CorrectedPerc.AutoSize = true;
+            this.CorrectedPerc.Location = new System.Drawing.Point(590, 54);
+            this.CorrectedPerc.Name = "CorrectedPerc";
+            this.CorrectedPerc.Size = new System.Drawing.Size(0, 13);
+            this.CorrectedPerc.TabIndex = 11;
             // 
-            // label3
+            // CorrectedPix
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(259, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Image with added Noise";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(259, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Correct Pixels:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(512, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Filtered Image";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(512, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Correct Pixels:";
-            // 
-            // noisePercTxt
-            // 
-            this.noisePercTxt.AutoSize = true;
-            this.noisePercTxt.Location = new System.Drawing.Point(262, 54);
-            this.noisePercTxt.Name = "noisePercTxt";
-            this.noisePercTxt.Size = new System.Drawing.Size(68, 13);
-            this.noisePercTxt.TabIndex = 6;
-            this.noisePercTxt.Text = "Percentage: ";
-            // 
-            // NoisePixels
-            // 
-            this.NoisePixels.AutoSize = true;
-            this.NoisePixels.Location = new System.Drawing.Point(340, 36);
-            this.NoisePixels.Name = "NoisePixels";
-            this.NoisePixels.Size = new System.Drawing.Size(0, 13);
-            this.NoisePixels.TabIndex = 7;
-            // 
-            // NoisePerc
-            // 
-            this.NoisePerc.AutoSize = true;
-            this.NoisePerc.Location = new System.Drawing.Point(343, 53);
-            this.NoisePerc.Name = "NoisePerc";
-            this.NoisePerc.Size = new System.Drawing.Size(0, 13);
-            this.NoisePerc.TabIndex = 8;
+            this.CorrectedPix.AutoSize = true;
+            this.CorrectedPix.Location = new System.Drawing.Point(592, 36);
+            this.CorrectedPix.Name = "CorrectedPix";
+            this.CorrectedPix.Size = new System.Drawing.Size(0, 13);
+            this.CorrectedPix.TabIndex = 10;
             // 
             // label7
             // 
@@ -201,29 +146,84 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Percentage: ";
             // 
-            // CorrectedPix
+            // NoisePerc
             // 
-            this.CorrectedPix.AutoSize = true;
-            this.CorrectedPix.Location = new System.Drawing.Point(592, 36);
-            this.CorrectedPix.Name = "CorrectedPix";
-            this.CorrectedPix.Size = new System.Drawing.Size(0, 13);
-            this.CorrectedPix.TabIndex = 10;
+            this.NoisePerc.AutoSize = true;
+            this.NoisePerc.Location = new System.Drawing.Point(343, 53);
+            this.NoisePerc.Name = "NoisePerc";
+            this.NoisePerc.Size = new System.Drawing.Size(0, 13);
+            this.NoisePerc.TabIndex = 8;
             // 
-            // CorrectedPerc
+            // NoisePixels
             // 
-            this.CorrectedPerc.AutoSize = true;
-            this.CorrectedPerc.Location = new System.Drawing.Point(590, 54);
-            this.CorrectedPerc.Name = "CorrectedPerc";
-            this.CorrectedPerc.Size = new System.Drawing.Size(0, 13);
-            this.CorrectedPerc.TabIndex = 11;
+            this.NoisePixels.AutoSize = true;
+            this.NoisePixels.Location = new System.Drawing.Point(340, 36);
+            this.NoisePixels.Name = "NoisePixels";
+            this.NoisePixels.Size = new System.Drawing.Size(0, 13);
+            this.NoisePixels.TabIndex = 7;
             // 
-            // PixCount
+            // noisePercTxt
             // 
-            this.PixCount.AutoSize = true;
-            this.PixCount.Location = new System.Drawing.Point(76, 36);
-            this.PixCount.Name = "PixCount";
-            this.PixCount.Size = new System.Drawing.Size(0, 13);
-            this.PixCount.TabIndex = 12;
+            this.noisePercTxt.AutoSize = true;
+            this.noisePercTxt.Location = new System.Drawing.Point(262, 54);
+            this.noisePercTxt.Name = "noisePercTxt";
+            this.noisePercTxt.Size = new System.Drawing.Size(68, 13);
+            this.noisePercTxt.TabIndex = 6;
+            this.noisePercTxt.Text = "Percentage: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(512, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Correct Pixels:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(512, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Filtered Image";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(259, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Correct Pixels:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(259, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Image with added Noise";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Pixel Count:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Input Image";
             // 
             // CBNoise
             // 
