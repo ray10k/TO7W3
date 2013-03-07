@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tho7_Week3.ImageModifications;
 using Tho7_Week3.ImageModifications.Filters;
+using Tho7_Week3.ImageModifications.Noise;
 
 namespace Tho7_Week3
 {
@@ -30,7 +31,7 @@ namespace Tho7_Week3
         private Bitmap InputImage;
 
         private List<VisionAlgorithm> filters;
-        private List<VisionAlgorithm> noise;
+        private List<NoiseBase> noise;
 
         private int pixCount = 0;
 
@@ -41,6 +42,7 @@ namespace Tho7_Week3
             imageView2.BoxName = "Image with Noise";
             imageView3.BoxName = "Result Image";
             InitFilters();
+            InitNoise();
         }
 
         private void InitFilters()
@@ -48,7 +50,6 @@ namespace Tho7_Week3
             //Add filters here
             filters = new List<VisionAlgorithm>();
             filters.Add(new MedianAlgorithmUnsafe3x3BMCopy("Median"));
-            filters.Add(new MedianAlgorithmUnsafe3x3BMCopy("Median2"));
 
             foreach (VisionAlgorithm alg in filters)
             {
@@ -60,9 +61,11 @@ namespace Tho7_Week3
         private void InitNoise()
         {
             //Add noise here
-            noise = new List<VisionAlgorithm>();
+            noise = new List<NoiseBase>();
+            noise.Add(new SnPNoiseAlgorithm("Salt and Pepper - 10", 10));
+            noise.Add(new SnPNoiseAlgorithm("Salt and Pepper - 20"));
 
-            foreach (VisionAlgorithm n in noise)
+            foreach (NoiseBase n in noise)
             {
                 CBNoise.Items.Add(n.Name);
             }
@@ -104,29 +107,29 @@ namespace Tho7_Week3
         private void BStart_Click(object sender, EventArgs e)
         {
             bool canRun = true;
-            //if (CBNoise.Items.Count == 0 || CBFilter.Items.Count == 0)
-            //    canRun = false;
+            if (CBNoise.Items.Count == 0 || CBFilter.Items.Count == 0)
+                canRun = false;
             if (imageView1.Image == null)
                 canRun = false;
 
             if (canRun)
             {
                 int correct = 0;
+                NoiseBase nb = null;
+
+                foreach (NoiseBase nBase in noise)
+                {
+                    if (CBNoise.SelectedItem.Equals(nBase.Name))
+                    {
+                        nb = nBase;
+                    }
+                }
+                imageView2.Image = nb.MakeNoise(imageView1.Image);
+                correct = BitmapCompare.BmpCompare.GetEqualPixelCount(InputImage, imageView2.Image);
+                NoisePixels.Text = correct + " Pixels";
+                NoisePerc.Text = String.Format("{0:0.000}% ", ((double)correct / (double)pixCount) * 100.0);
+
                 VisionAlgorithm alg = null;
-
-                //foreach (VisionAlgorithm al in noise)
-                //{
-                //    if (CBNoise.SelectedItem.Equals(al.Name))
-                //    {
-                //        alg = al;
-                //    }
-                //}
-                //imageView2.Image = alg.DoAlgorithm(imageView1.Image);
-                //correct = BitmapCompare.BmpCompare.GetEqualPixelCount(InputImage, imageView2.Image);
-                //NoisePixels.Text = correct + " Pixels";
-                //NoisePerc.Text = String.Format("{0:0.000}% ", ((double)correct / (double)pixCount) * 100.0);
-
-                alg = null;
                 foreach (VisionAlgorithm al in filters)
                 {
                     if (CBFilter.SelectedItem.Equals(al.Name))
@@ -134,7 +137,7 @@ namespace Tho7_Week3
                         alg = al;
                     }
                 }
-                imageView3.Image = alg.DoAlgorithm(imageView1.Image);
+                imageView3.Image = alg.DoAlgorithm(imageView2.Image);
                 correct = BitmapCompare.BmpCompare.GetEqualPixelCount(InputImage, imageView3.Image);
                 CorrectedPix.Text = correct + " Pixels";
                 CorrectedPerc.Text = String.Format("{0:0.000}% ", ((double)correct / (double)pixCount) * 100.0);

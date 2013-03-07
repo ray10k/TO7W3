@@ -52,9 +52,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageModifications\BitmapCompare.cs" />
+    <Compile Include="ImageModifications\Noise\SnPNoiseAlgorithm.cs" />
     <Compile Include="ImageModifications\MedianCompare.cs" />
     <Compile Include="ImageModifications\Filters\MedianAlgorithmUnsafe3x3BMCopy.cs" />
     <Compile Include="ImageModifications\Filters\VisionAlgorithm.cs" />
+    <Compile Include="ImageModifications\Noise\NoiseBase.cs" />
     <Compile Include="ImageView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +93,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
