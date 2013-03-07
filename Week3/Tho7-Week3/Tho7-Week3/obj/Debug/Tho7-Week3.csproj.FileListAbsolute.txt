@@ -11,3 +11,10 @@ C:\Users\Erwin\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7
 C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\bin\Debug\Tho7-Week3.exe.config
 C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7-Week3.exe
 C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7-Week3.pdb
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\bin\Debug\Tho7-Week3.exe
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\bin\Debug\Tho7-Week3.pdb
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7-Week3.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7_Week3.Form1.resources
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7_Week3.ImageView.resources
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7_Week3.Properties.Resources.resources
+C:\Users\Jonathan\Documents\GitHub\TO7W3\Week3\Tho7-Week3\Tho7-Week3\obj\Debug\Tho7-Week3.csproj.GenerateResource.Cache

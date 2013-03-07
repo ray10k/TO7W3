@@ -138,9 +138,13 @@ namespace Tho7_Week3
                     }
                 }
                 imageView3.Image = alg.DoAlgorithm(imageView2.Image);
-                correct = BitmapCompare.BmpCompare.GetEqualPixelCount(InputImage, imageView3.Image);
-                CorrectedPix.Text = correct + " Pixels";
-                CorrectedPerc.Text = String.Format("{0:0.000}% ", ((double)correct / (double)pixCount) * 100.0);
+                MedianCompare.DoAlgorithm(InputImage, imageView3.Image);
+                CorrectedPix.Text = MedianCompare.pixelsCorrect + " Pixels";
+                CorrectedPerc.Text = String.Format("{0:0.000}% ", MedianCompare.percentageCorrect);
+                //correct = BitmapCompare.BmpCompare.GetEqualPixelCount(InputImage, imageView3.Image);
+                //CorrectedPix.Text = correct + " Pixels";
+                //CorrectedPerc.Text = String.Format("{0:0.000}% ", ((double)correct / (double)pixCount) * 100.0);
+                
             }
         }
     }

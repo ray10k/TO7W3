@@ -16,10 +16,12 @@ namespace Tho7_Week3.ImageModifications
      */
     class MedianCompare
     {
-        public static int percentageChanged = 0;
+        public static double percentageChanged = 0.0;
         public static int pixelsChanged = 0;
+        public static double percentageCorrect = 0.0;
+        public static int pixelsCorrect = 0;
 
-        public byte[] DoAlgorithm(ref byte[] originalImage, ref byte[] sourceImage)
+        public static byte[] DoAlgorithm(ref byte[] originalImage, ref byte[] sourceImage)
         {
             //counter to keep track of changed pixels
             int changedPixels = 0;
@@ -54,7 +56,7 @@ namespace Tho7_Week3.ImageModifications
             return retVal;
         }
 
-        public System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap originalImage, System.Drawing.Bitmap sourceImage)
+        public static System.Drawing.Bitmap DoAlgorithm(System.Drawing.Bitmap originalImage, System.Drawing.Bitmap sourceImage)
         {
             Bitmap newBitmap = new Bitmap(sourceImage.Width, sourceImage.Height);
 
@@ -107,7 +109,7 @@ namespace Tho7_Week3.ImageModifications
 
                         //als de originele rgb-waarden niet gelijk zijn aan de source
                         //optellen van changedPixels
-                        if ((oRow[x * pixelSize] + oRow[x * pixelSize + 1] + oRow[x * pixelSize + 2]) != sRow[x * pixelSize] + sRow[x * pixelSize + 1] + sRow[x * pixelSize + 2])
+                        if ( (oRow[x * pixelSize] != sRow[x * pixelSize]) || (oRow[x * pixelSize + 1]  != sRow[x * pixelSize + 1]) || (oRow[x * pixelSize + 2] != sRow[x * pixelSize + 2]) )
                         {
                             changedPixels++;
                         }
@@ -119,12 +121,22 @@ namespace Tho7_Week3.ImageModifications
 
                     }
                 }
+
+                originalImage.UnlockBits(originalData);
+                sourceImage.UnlockBits(sourceData);
+                newBitmap.UnlockBits(newData);
             }
+
+            
 
             int totalPixels = originalImage.Width * originalImage.Height;
 
-            percentageChanged = (changedPixels / totalPixels) * 100;
+            percentageChanged = ((double)changedPixels / totalPixels) * 100.0;
             pixelsChanged = changedPixels;
+
+            percentageCorrect = 100.0 - percentageChanged;
+            pixelsCorrect = totalPixels - pixelsChanged;
+
 
             return newBitmap;
         }
