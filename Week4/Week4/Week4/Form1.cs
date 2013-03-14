@@ -44,6 +44,8 @@ namespace Week4
             cbAlgo.Items.Clear();
             for (int i = 0; i < algorithms.Count; i++)
                 cbAlgo.Items.Add(algorithms[i].Name);
+            if (cbAlgo.Items.Count > 0)
+                cbAlgo.SelectedIndex = 0;
         }
 
         private void bOpenXml_Click(object sender, EventArgs e)
@@ -94,36 +96,113 @@ namespace Week4
         private void cbImage_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = cbImage.SelectedIndex;
-            Point p;
-            p = xmlData[index].Value.LeftTop;
-            lXMLul.Text = "{" + p.X + ", " + p.Y + "}";
-            p = xmlData[index].Value.RightTop;
-            lXMLur.Text = "{" + p.X + ", " + p.Y + "}";
-            p = xmlData[index].Value.LeftBottom;
-            lXMLll.Text = "{" + p.X + ", " + p.Y + "}";
-            p = xmlData[index].Value.RightBottom;
-            lXMLlr.Text = "{" + p.X + ", " + p.Y + "}";
-
             string path = XMLReader.xmlPath;
             path = path.Substring(0, path.IndexOf("\\") + 1);
             pbInput.Image = new Bitmap(path + xmlData[index].Value.FileName);
+            Bitmap bitmap = new Bitmap(path + xmlData[index].Value.FileName);
 
+            Point p;
+            p = xmlData[index].Value.LeftTop;
+            lXMLul.Text = "{" + p.X + ", " + p.Y + "}";
+            DrawPixel(ref bitmap, p, Color.Green);
+            p = xmlData[index].Value.RightTop;
+            lXMLur.Text = "{" + p.X + ", " + p.Y + "}";
+            DrawPixel(ref bitmap, p, Color.Green);
+            p = xmlData[index].Value.LeftBottom;
+            lXMLll.Text = "{" + p.X + ", " + p.Y + "}";
+            DrawPixel(ref bitmap, p, Color.Green);
+            p = xmlData[index].Value.RightBottom;
+            lXMLlr.Text = "{" + p.X + ", " + p.Y + "}";
+            DrawPixel(ref bitmap, p, Color.Green);
+            
             if (algoData.Count != 0 && algoData.Count > index)
             {
                 p = algoData[index].LeftTop;
                 lALGOul.Text = "{" + p.X + ", " + p.Y + "}";
+                DrawPixel(ref bitmap, p, Color.Red);
                 p = algoData[index].RightTop;
                 lALGOur.Text = "{" + p.X + ", " + p.Y + "}";
+                DrawPixel(ref bitmap, p, Color.Red);
                 p = algoData[index].LeftBottom;
                 lALGOll.Text = "{" + p.X + ", " + p.Y + "}";
+                DrawPixel(ref bitmap, p, Color.Red);
                 p = algoData[index].RightBottom;
                 lALGOlr.Text = "{" + p.X + ", " + p.Y + "}";
+                DrawPixel(ref bitmap, p, Color.Red);
             }
+            pbOutput.Image = bitmap;
+
             if (overlap.Count != 0)
                 lOverlap.Text = String.Format("{0:0.000}% ", overlap[index]);
             else
                 lOverlap.Text = String.Format("{0:0.000}% ", 0.0);
             lAVGoverlap.Text = String.Format("{0:0.000}% ", avgOverlap);
+        }
+
+        private void DrawPixel(ref Bitmap bitmap, Point p, Color c)
+        {
+            if (p.X == 0 && p.Y == 0)
+            {
+                bitmap.SetPixel(p.X, p.Y, c);
+                bitmap.SetPixel(p.X + 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y + 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y + 1, c);
+            }
+            else if (p.X == bitmap.Width && p.Y == bitmap.Height)
+            {
+                bitmap.SetPixel(p.X - 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X, p.Y - 1, c);
+                bitmap.SetPixel(p.X - 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y, c);
+            }
+            else if (p.X == 0)
+            {
+                bitmap.SetPixel(p.X, p.Y - 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X, p.Y, c);
+                bitmap.SetPixel(p.X + 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y + 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y + 1, c);
+            }
+            else if (p.X == bitmap.Width)
+            {
+                bitmap.SetPixel(p.X - 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X, p.Y - 1, c);
+                bitmap.SetPixel(p.X - 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y, c);
+                bitmap.SetPixel(p.X - 1, p.Y + 1, c);
+                bitmap.SetPixel(p.X, p.Y + 1, c);
+            }
+            else if (p.Y == 0)
+            {
+                bitmap.SetPixel(p.X - 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y, c);
+                bitmap.SetPixel(p.X + 1, p.Y, c);
+                bitmap.SetPixel(p.X - 1, p.Y + 1, c);
+                bitmap.SetPixel(p.X, p.Y + 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y + 1, c);
+            }
+            else if (p.Y == bitmap.Height)
+            {
+                bitmap.SetPixel(p.X - 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X, p.Y - 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X - 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y, c);
+                bitmap.SetPixel(p.X + 1, p.Y, c);
+            }
+            else
+            {
+                bitmap.SetPixel(p.X - 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X, p.Y - 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y - 1, c);
+                bitmap.SetPixel(p.X - 1, p.Y, c);
+                bitmap.SetPixel(p.X, p.Y, c);
+                bitmap.SetPixel(p.X + 1, p.Y, c);
+                bitmap.SetPixel(p.X - 1, p.Y + 1, c);
+                bitmap.SetPixel(p.X, p.Y + 1, c);
+                bitmap.SetPixel(p.X + 1, p.Y + 1, c);
+            }
         }
 
         private double CalculateOverlap(int cbImageIndex)
