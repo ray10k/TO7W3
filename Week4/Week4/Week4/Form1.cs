@@ -29,6 +29,7 @@ namespace Week4
             InitializeComponent();
             algoData = new List<NumberPlateCoordinates>();
             algorithms = new List<VisionAlgorithm>();
+            algorithms.Add(new SobolAlgorithm("Sobol scan"));
             // ADD ALGORITHMS HERE
             //         /\
             //        //\\
@@ -67,7 +68,7 @@ namespace Week4
             for (int i = 0; i < xmlData.Count; i++)
             {
                 b = new Bitmap(XMLReader.xmlPath.Substring(0, XMLReader.xmlPath.LastIndexOf("\\") + 1) + xmlData[i].Value.FileName);
-                //algoData.Add(algorithms[cbAlgo.SelectedIndex].DoAlgorithm(b));
+                algoData.Add(algorithms[cbAlgo.SelectedIndex].DoAlgorithm(b));
             }
             ShowDataInGui();
         }
