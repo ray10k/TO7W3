@@ -5,8 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Week4
 {
+    /// <Author>
+    /// Erwin Bonnet
+    /// </Author>
     public class NumberPlateCoordinates
     {
         public Point LeftTop { get; set; }

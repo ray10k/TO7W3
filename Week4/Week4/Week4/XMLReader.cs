@@ -7,6 +7,9 @@ using System.Xml;
 
 namespace Week4
 {
+    /// <Author>
+    /// Erwin Bonnet
+    /// </Author>
     public class XMLReader
     {
         public static string xmlPath = "Testset V 2.0\\testsamples.xml";
